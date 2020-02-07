@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>Formulario para Solicitud de cargo de Maesto de la Institucion "Ejemplo"</p>
+    <form method="post">
+    <input pattern="[a-zA-ZñÑ ]{3,65}" required type="text" placeholder="Nombre">
+    <input pattern="[a-zA-ZñÑ ]{3,65}" required type="text" placeholder="Apellido">
+    <br><br> 
+    <input pattern="[a-zA-ZñÑ ]{3,65}" required type="text" placeholder="Fecha de nacimiento">
+    <input pattern="[a-zA-ZñÑ ]{3,65}" required type="text" placeholder="DUI">
+    <br><br>
+    <input pattern="[a-zA-ZñÑ ]{3,65}" required type="text" placeholder="Dirección">
+    <input pattern="[a-zA-ZñÑ ]{3,65}" required type="text" placeholder="Telefono">
+    <br><br>
+    <input pattern="[a-zA-ZñÑ ]{3,65}" required type="text" placeholder="Grado Academico">
+    <select>
+        <option value="M">Masculino</option>
+        <option value="F">Femenino</option>
+      </select>
+    <br><br>
+    <p>Escriba sus cualidades en educacion y por que solicita el cargo. </p>
+    <textarea pattern="[\w]{10,150}" required cols="30" rows="3"></textarea> <br>
+    <br><br>
+    <input type="submit" value="Enviar">   
+</body>
+</html>
