@@ -9,17 +9,20 @@ document.addEventListener("DOMContentLoaded", (event) =>{
             nombre = document.querySelector("#txtNombreAlumno").value,
             direccion = document.querySelector("#txtDireccionAlumno").value,
             telefono = document.querySelector("#txtTelefonoAlumno").value;
-
+            //creo un array para guardar la informacion en un array para guardar mas de un datos del formulario
             var Guardarcodigo="codigo"+ ""+codigo;
             var Guardarnombre="nombre"+""+nombre;
             var Guardardireccion="direccion"+""+direccion;
             var Guardartelefono="telefono"+""+telefono;
-
+            alert("Datos Guardados");
+            //envio la datos a guardar localstorage
             if( 'localStorage' in window){
            var cod=localStorage.setItem(Guardarcodigo,codigo);
            var nomb=localStorage.setItem(Guardarnombre, nombre);
            var dire=localStorage.setItem(Guardardireccion, direccion);
            var tel=localStorage.setItem(Guardartelefono, telefono);
+           //alerto al usuario que los datos se han guardado
+           alert("Datos Guardados");
          } else {
             alert("almacenamiento en local NO soportado!!! Actualizate!");
         }
