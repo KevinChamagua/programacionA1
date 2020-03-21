@@ -88,3 +88,5 @@ function elegir_las_opciones(){
         a1.options.add(newop);
       };
      }
+
+     //patatata
