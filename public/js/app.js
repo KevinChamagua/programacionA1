@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded",event=>{
     mostrarVista.addEventListener('click',e=>{
         e.stopPropagation();
 
-        let modulo = e.srcElement.dataset.modulo;
+        let modulo = e.toElement.dataset.modulo;
         fetch('public/vistas/alumnos/alumnos.html').then( resp=>resp.text() ).then(resp=>{
             $(`#vista-${modulo}`).innerHTML = resp;
-            
+
             let btnCerrar = $(".close");
             btnCerrar.addEventListener("click",event=>{
                 $(`#vista-${modulo}`).innerHTML = "";
@@ -19,4 +19,4 @@ document.addEventListener("DOMContentLoaded",event=>{
             cuerpo.appendChild(script);
         });
     });
-});
+}); 
