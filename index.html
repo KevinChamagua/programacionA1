@@ -1,67 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="public/css/estilos.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <title>APP ACADEMICA</title>
-    </head>
-    <body class="bg-secondary">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">::.. APP ..::</a>
-           
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">INICIO <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mostrar-alumnos" data-modulo="alumnos" data-form="alumnos" href="#">Alumnos</a>
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link mostrar-buscar-alumnos" data-modulo="alumnos" data-form="buscar-alumnos" href="#">Buscar Alumnos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mostrar-docentes" data-modulo="docentes" data-form="docentes" href="#">Docentes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mostrar-buscar-docentes" data-modulo="docentes" data-form="buscar-docentes" href="#">Buscar Docentes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mostrar-materias" data-modulo="materias" data-form="materias" href="#">Materias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mostrar-buscar-materias" data-modulo="materias" data-form="buscar-materias" href="#">Buscar Materias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mostrar-matricula" data-modulo="matricula" href="#">Matricula</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mostrar-inscripcion" data-modulo="inscripcion" href="#">Inscripcion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mostrar-notas" data-modulo="notas" href="#">Notas</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class="container">
-            <div class="modelos" id="vista-alumnos"></div>
-            <div class="modelos" id="vista-buscar-alumnos"></div>
-            <div class="modelos" id="vista-docentes"></div>
-            <div class="modelos" id="vista-buscar-docentes"></div>
-            <div class="modelos" id="vista-materias"></div>
-            <div class="modelos" id="vista-buscar-materias"></div>
-            <div class="modelos" id="vista-matricula"></div>
-            <div class="modelos" id="vista-inscripcion"></div>
-            <div class="modelos" id="vista-notas"></div>
-        </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="public/js/jquery-ui.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bienvenido a Programacion IV</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="public/css/estilos.css">
+    <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
+</head> 
+<body class="bg-secondary">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">::.. APP ACADEMICA ..::</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mostrar-alumnos" data-modulo="alumnos" data-form="alumnos" href="#">Alumnos</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link mostrar-docentes" data-modulo="docentes" data-form="docentes" href="#">Docentes</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link mostrar-materias" data-modulo="materias" data-form="materias" href="#">Materia</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link mostrar-matricula" data-modulo="matriculas" data-form="matriculas" href="#">Matriculas</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link mostrar-inscripciones" data-modulo="inscripciones" data-form="inscripciones" href="#">Inscripciones</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link mostrar-notas" data-modulo="notas" data-form="notas" href="#">Notas</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="modulos">
+        <div class="modulos" id="vistas-alumnos"></div>
+        <div class="modulos" id="vistas-buscar-alumnos"></div>
+        <div class="modulos" id="vistas-docentes"></div>
+        <div class="modulos" id="vistas-buscar-docentes"></div>
+        <div class="modulos" id="vistas-materias"></div>
+        <div class="modulos" id="vistas-buscar-materias"></div>
+        <div class="modulos" id="vistas-matriculas"></div>
+        <div class="modulos" id="vistas-buscar-matriculas"></div>
+        <div class="modulos" id="vistas-inscripciones"></div>
+        <div class="modulos" id="vistas-buscar-inscripciones"></div>
+        <div class="modulos" id="vistas-notas"></div>
+        <div class="modulos" id="vistas-buscar-notas"></div>
+
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="public/js/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script type="module" src="public/js/app.js"></script>
-    </form>
-    </body>
-    </html>
+    <script src="public/js/app.js"></script>
+    <script src="https://unpkg.com/vue-select@3.0.0"></script>
+</body>
+</html>

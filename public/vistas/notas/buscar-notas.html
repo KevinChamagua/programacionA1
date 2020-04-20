@@ -1,0 +1,37 @@
+<form method="POST" id="frm-buscar-notas">
+    <div class="card text-white bg-dark mb-3" style="max-width: 48rem;">
+        <div class="car-header">
+            BUSQUEDA NOTAS
+
+            <button type="button" id="btn-close-buscar-notas" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <table id="tbl-buscar-notas" class="table-striped table-dark table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <input type="text" v-model="valor" v-on:keyup="buscarNota" placeholder="Codigo o nombre" class="form-control">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>CODIGO</th>
+                        <th>MATERIA</th>                      
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="minotas in misnotas" :key="minotas.idNota" v-on:click="modificarNota(minotas)">
+                        <td>{{ minotas.codigo }}</td>
+                        <td>{{ minotas.materia }}</td>
+                        <td>
+                            <input v-on:click="eliminarNota(minotas.idNota)" type="button" class="btn btn-outline-danger text-white" value="del">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/notas/buscar-notas.js"></script>
