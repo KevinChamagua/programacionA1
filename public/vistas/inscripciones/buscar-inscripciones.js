@@ -6,7 +6,7 @@ var appBuscarInscripciones = new Vue({
     },
     methods:{
         buscarInscripcion:function(){
-            fetch(`private/Modulos/inscripcion/procesos.php?proceso=buscarInscripcion&inscripciones=${this.valor}`).then(resp=>resp.json()).then(resp=>{
+            fetch(`private/Modulos/inscripcion/procesos.php?proceso=buscarInscripciones&inscripciones=${this.valor}`).then(resp=>resp.json()).then(resp=>{
                 this.misdatos = resp;
              });
             },
@@ -20,7 +20,7 @@ var appBuscarInscripciones = new Vue({
                 });
             }
         },
-        created:function(){
+        created(){
             this.buscarInscripcion();
         }
     });

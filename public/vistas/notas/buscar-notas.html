@@ -24,7 +24,7 @@
                 <tbody>
                     <tr v-for="minotas in misnotas" :key="minotas.idNota" v-on:click="modificarNota(minotas)">
                         <td>{{ minotas.codigo }}</td>
-                        <td>{{ minotas.materia }}</td>
+                        <td>{{ minotas.nombre }}</td>
                         <td>
                             <input v-on:click="eliminarNota(minotas.idNota)" type="button" class="btn btn-outline-danger text-white" value="del">
                         </td>

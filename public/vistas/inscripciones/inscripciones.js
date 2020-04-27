@@ -10,17 +10,22 @@ var appinscripciones = new Vue({
         }
     },
     methods:{
-        guardarinscripciones(){
-            fetch(`private/Modulos/inscripciones/procesos.php?proceso=recibirDatos&inscripciones=${JSON.stringify(this.inscripciones)}`).then( resp=>resp.json() ).then(resp=>{
+        guardarInscripciones(){
+            fetch(`private/Modulos/inscripciones/procesos.php?proceso=recibirDatos&inscripciones=${JSON.stringify(this.inscripcion)}`).then( resp=>resp.json() ).then(resp=>{
                 this.inscripciones.msg = resp.msg;
+                this.limpiarInscripciones();
+
             });
         },
-        limpiarInscripcions(){
-            this.inscripciones.idInscripcion=0;
-            this.inscripciones.accion="nuevo";
-            this.inscripciones.codigo="";
-            this.inscripciones.nombre="";
-            this.inscripciones.msg="";
+        limpiarInscripciones(){
+            this.inscripcion.idInscripcion=0;
+            this.inscripcion.accion="nuevo";
+            this.inscripcion.codigo="";
+            this.inscripcion.nombre="";
+            this.inscripcion.direccion="";
+            this.inscripcion.responsable="";
+            this.inscripcion.telefono="";
+            this.inscripcion.msg="";
         }
     }
 });

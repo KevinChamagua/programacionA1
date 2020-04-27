@@ -24,8 +24,8 @@ class nota{
         if( empty($this->datos['codigo']) ){
             $this->respuesta['msg'] = 'por favor ingrese el codigo del nota';
         }
-        if( empty($this->datos['materia']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el materia del nota';
+        if( empty($this->datos['nombre']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el nombre del nota';
         }
         $this->almacenar_nota();
     }
@@ -33,9 +33,9 @@ class nota{
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
-                    INSERT INTO notas (codigo,materia) VALUES(
+                    INSERT INTO notas (codigo,nombre) VALUES(
                         "'. $this->datos['codigo'] .'",
-                        "'. $this->datos['materia'] .'" 
+                        "'. $this->datos['nombre'] .'" 
                     )
                 ');
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
@@ -43,8 +43,8 @@ class nota{
                 $this->db->consultas('
                     UPDATE notas SET
                         codigo      = "'. $this->datos['codigo'] .'",
-                        materia      = "'. $this->datos['materia'] .'"
-                    WHERE idnota = "'. $this->datos['idNota'] .'"
+                        nombre      = "'. $this->datos['nombre'] .'"                  
+                    WHERE idNota    = "'. $this->datos['idNota'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
@@ -52,9 +52,9 @@ class nota{
     }
     public function buscarNota($valor = ''){
         $this->db->consultas('
-            select notas.idNota, notas.codigo, notas.materia
+            select notas.idNota, notas.codigo, notas.nombre
             from notas
-            where notas.codigo like "%'. $valor .'%" or notas.materia like "%'. $valor .'%"
+            where notas.codigo like "%'. $valor .'%" or notas.nombre like "%'. $valor .'%"
         ');
         return $this->respuesta = $this->db->obtener_data();
     }

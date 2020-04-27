@@ -21,14 +21,11 @@ class matricula{
         $this->validar_datos();
     }
     private function validar_datos(){
-        if( empty($this->datos['codigo']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el codigo del estudiante';
+        if( empty($this->datos['periodo']['id']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el periodo del matricula';
         }
-        if( empty($this->datos['nombre']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el nombre del estudiante';
-        }
-        if( empty($this->datos['direccion']) ){
-            $this->respuesta['msg'] = 'por favor ingrese la direccion del estudiante';
+        if( empty($this->datos['alumno']['id']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el alumno';
         }
         $this->almacenar_matricula();
     }
@@ -36,21 +33,19 @@ class matricula{
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
-                    INSERT INTO matriculas (codigo,nombre,direccion,telefono) VALUES(
-                        "'. $this->datos['codigo'] .'",
-                        "'. $this->datos['nombre'] .'",
-                        "'. $this->datos['direccion'] .'",
-                        "'. $this->datos['telefono'] .'"
+                    INSERT INTO matriculas (idPeriodo,idAlumno,fecha) VALUES(
+                        "'. $this->datos['periodo']['id'] .'",
+                        "'. $this->datos['alumno']['id'] .'",
+                        "'. $this->datos['fecha'] .'"
                     )
                 ');
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
             } else if( $this->datos['accion']==='modificar' ){
                 $this->db->consultas('
                     UPDATE matriculas SET
-                        codigo     = "'. $this->datos['codigo'] .'",
-                        nombre     = "'. $this->datos['nombre'] .'",
-                        direccion  = "'. $this->datos['direccion'] .'",
-                        telefono   = "'. $this->datos['telefono'] .'"
+                        idPeriodo     = "'. $this->datos['periodo']['id'] .'",
+                        idAlumno      = "'. $this->datos['alumno']['id'] .'",
+                        fecha         = "'. $this->datos['fecha'] .'"
                     WHERE idMatricula = "'. $this->datos['idMatricula'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
@@ -58,12 +53,52 @@ class matricula{
         }
     }
     public function buscarMatricula($valor = ''){
+        if( substr_count($valor, '-')===2 ){
+            $valor = implode('-', array_reverse(explode('-',$valor)));
+        }
         $this->db->consultas('
-            select matriculas.idMatricula, matriculas.codigo, matriculas.nombre, matriculas.direccion, matriculas.telefono
+            select matriculas.idMatricula, matriculas.idPeriodo, matriculas.idAlumno, 
+                date_format(matriculas.fecha,"%d-%m-%Y") AS fecha, matriculas.fecha AS f, 
+                alumnos.codigo, alumnos.nombre, 
+                periodos.periodo, periodos.activo
             from matriculas
-            where matriculas.codigo like "%'. $valor .'%" or matriculas.nombre like "%'. $valor .'%"
+                inner join alumnos on(alumnos.idAlumno=matriculas.idAlumno)
+                inner join periodos on(periodos.idPeriodo=matriculas.idPeriodo)
+            where alumnos.nombre like "%'. $valor .'%" or 
+                periodos.periodo like "%'. $valor .'%" or 
+                matriculas.fecha like "%'. $valor .'%"
         ');
-        return $this->respuesta = $this->db->obtener_data();
+        $matriculas = $this->respuesta = $this->db->obtener_data();
+        foreach ($matriculas as $key => $value) {
+            $datos[] = [
+                'idMatricula' => $value['idMatricula'],
+                'alumno'      => [
+                    'id'      => $value['idAlumno'],
+                    'label'   => $value['nombre']
+                ],
+                'periodo'      => [
+                    'id'      => $value['idPeriodo'],
+                    'label'   => $value['periodo']
+                ],
+                'fecha'       => $value['f'],
+                'f'           => $value['fecha']
+
+            ]; 
+        }
+        return $this->respuesta = $datos;
+    }
+    public function traer_periodos_alumnos(){
+        $this->db->consultas('
+            select periodos.periodo AS label, periodos.idPeriodo AS id
+            from periodos
+        ');
+        $periodos = $this->db->obtener_data();
+        $this->db->consultas('
+            select alumnos.nombre AS label, alumnos.idAlumno AS id
+            from alumnos
+        ');
+        $alumnos = $this->db->obtener_data();
+        return $this->respuesta = ['periodos'=>$periodos, 'alumnos'=>$alumnos ];//array de php en v7+
     }
     public function eliminarMatricula($idMatricula = 0){
         $this->db->consultas('

@@ -11,16 +11,16 @@ var appBuscarNotas = new Vue({
              });
             },
             modificarNotas:function(nota){
-                appnota.nota = nota;
-                appnota.nota.accion = 'modificar';
+                appnotas.nota = nota;
+                appnotas.nota.accion = 'modificar';
             },
             eliminarNota:function(idNota){
-                fetch(`private/Modulos/notas/procesos.php?proceso=eliminarNota&nota=${idnota}`).then(resp=>resp.json()).then(resp=>{
+                fetch(`private/Modulos/notas/procesos.php?proceso=eliminarNota&nota=${idNota}`).then(resp=>resp.json()).then(resp=>{
                     this.buscarNota();
                 });
             }
         },
-        created:function(){
+        created(){
             this.buscarNota();
         }
     });

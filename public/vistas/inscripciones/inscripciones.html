@@ -1,7 +1,7 @@
-<form v-on:submit.prevent="guardarInscripcion" data-accion="nuevo" data-idinscripciones=''  id="frm-inscripciones" method="post">
-    <div class="card text-white bg-dark mb-3" style="max-width: 24rem;">
+<form method="post" v-on:submit.prevent="guardarInscripcion" data-accion="nuevo" data-idinscripciones=''  id="frm-inscripciones" method="post">
+    <div class="card text-white bg-dark mb-3" style="max-width: 36rem;">
         <div class="card-header">
-           MANTENIMIENTO DE inscripciones
+           MANTENIMIENTO DE INSCRIPCIONES
         
             <button type="button" id="btn-close-inscripciones" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -22,6 +22,27 @@
                 </div>
                 <div class="col-8">
                     <input type="text" required v-model="inscripciones.nombre" placeholder="AAA AAA" class="form-control">
+                </div>
+                <div class="row p-2">
+                    <div class="col-4">
+                DIRECCION
+                </div>
+                <div class="col-8">
+                    <input type="text" required v-model="inscripciones.direccion" placeholder="AAAAAA" class="form-control">
+                </div>
+                <div class="row p-2">
+                    <div class="col-4">
+                RESPONSABLE
+                </div>
+                <div class="col-8">
+                    <input type="text" required v-model="inscripciones.responsable" placeholder="AAAAAA" class="form-control">
+                </div>
+                <div class="row p-2">
+                    <div class="col-4">
+                TELEFONO
+                </div>
+                <div class="col-8">
+                    <input type="text" required v-model="inscripciones.telefono" placeholder="0000-0000" class="form-control">
                 </div>
             </div>
             <div class="row p-2">

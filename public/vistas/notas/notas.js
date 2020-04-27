@@ -5,7 +5,7 @@ var appnotas = new Vue({
             idNota : 0,
             accion    : 'nuevo',
             codigo    : '',
-            materia    : '',        
+            nombre    : '',        
             msg       : ''
         }
     },
@@ -16,10 +16,10 @@ var appnotas = new Vue({
             });
         },
         limpiarNotas(){
-            this.Nota.idNota=0;
+            this.nota.idNota=0;
             this.nota.accion="nuevo";
             this.nota.codigo="";
-            this.nota.materia="";
+            this.nota.nombre="";
             this.nota.msg="";
         }
     }
