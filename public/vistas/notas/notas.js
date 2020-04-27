@@ -1,11 +1,12 @@
 var appnotas = new Vue({
     el:'#frm-notas',
     data:{
-        Nota:{
+        nota:{
             idNota : 0,
             accion    : 'nuevo',
             codigo    : '',
-            nombre    : '',        
+            nombre    : '',
+            notatotal : '',
             msg       : ''
         }
     },
@@ -13,6 +14,7 @@ var appnotas = new Vue({
         guardarNotas(){
             fetch(`private/Modulos/notas/procesos.php?proceso=recibirDatos&nota=${JSON.stringify(this.nota)}`).then( resp=>resp.json() ).then(resp=>{
                 this.nota.msg = resp.msg;
+                this.limpiarNotas();
             });
         },
         limpiarNotas(){
@@ -20,6 +22,7 @@ var appnotas = new Vue({
             this.nota.accion="nuevo";
             this.nota.codigo="";
             this.nota.nombre="";
+            this.nota.notatotal="";
             this.nota.msg="";
         }
     }

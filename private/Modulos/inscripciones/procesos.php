@@ -1,38 +1,38 @@
 <?php 
 include('../../Config/Config.php');
-$docente = new docente($conexion);
+$inscripcion = new inscripcion($conexion);
 
 $proceso = '';
 if( isset($_GET['proceso']) && strlen($_GET['proceso'])>0 ){
 	$proceso = $_GET['proceso'];
 }
-$docente->$proceso( $_GET['docente'] );
-print_r(json_encode($docente->respuesta));
+$inscripcion->$proceso( $_GET['inscripcion'] );
+print_r(json_encode($inscripcion->respuesta));
 
-class docente{
+class inscripcion{
     private $datos = array(), $db;
     public $respuesta = ['msg'=>'correcto'];
     
     public function __construct($db){
         $this->db=$db;
     }
-    public function recibirDatos($docente){
-        $this->datos = json_decode($docente, true);
+    public function recibirDatos($inscripcion){
+        $this->datos = json_decode($inscripcion, true);
         $this->validar_datos();
     }
     private function validar_datos(){
         if( empty($this->datos['codigo']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el codigo del docente';
+            $this->respuesta['msg'] = 'por favor ingrese el codigo del inscripcion';
         }
         if( empty($this->datos['nombre']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el nombre del docente';
+            $this->respuesta['msg'] = 'por favor ingrese el nombre del inscripcion';
         }
         if( empty($this->datos['direccion']) ){
-            $this->respuesta['msg'] = 'por favor ingrese la direccion del docente';
+            $this->respuesta['msg'] = 'por favor ingrese la direccion del inscripcion';
         }
-        $this->almacenar_docente();
+        $this->almacenar_inscripcion();
     }
-    private function almacenar_docente(){
+    private function almacenar_inscripcion(){
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
@@ -40,9 +40,8 @@ class docente{
                         "'. $this->datos['codigo'] .'",
                         "'. $this->datos['nombre'] .'",
                         "'. $this->datos['direccion'] .'",
-                        "'. $this->datos['telefono'] .'",
-                        "'. $this->datos['dui'] .'",
-                        "'. $this->datos['nit'] .'"
+                        "'. $this->datos['responsable'] .'",
+                        "'. $this->datos['telefono'] .'"
                     )
                 ');
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
@@ -52,28 +51,27 @@ class docente{
                         codigo      = "'. $this->datos['codigo'] .'",
                         nombre      = "'. $this->datos['nombre'] .'",
                         direccion   = "'. $this->datos['direccion'] .'",
-                        telefono    = "'. $this->datos['telefono'] .'",
-                        dui         = "'. $this->datos['dui'] .'",
-                        nit         = "'. $this->datos['nit'] .'"
-                    WHERE idDocente = "'. $this->datos['idDocente'] .'"
+                        responsable = "'. $this->datos['responsable'] .'",
+                        telefono    = "'. $this->datos['telefono'] .'"
+                    WHERE idInscripcion = "'. $this->datos['idInscripcion'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
         }
     }
-    public function buscarDocente($valor = ''){
+    public function buscarInscripcion($valor = ''){
         $this->db->consultas('
-            select inscripciones.idDocente, inscripciones.codigo, inscripciones.nombre, inscripciones.direccion, inscripciones.telefono, inscripciones.dui, inscripciones.nit
+            select inscripciones.idInscripcion, inscripciones.codigo, inscripciones.nombre, inscripciones.direccion, inscripciones.responsable, inscripciones.telefono
             from inscripciones
-            where inscripciones.codigo like "%'. $valor .'%" or inscripciones.nombre like "%'. $valor .'%" or inscripciones.dui like "%'. $valor .'%" or inscripciones.nit like "%'. $valor .'%"
+            where inscripciones.codigo like "%'. $valor .'%" or inscripciones.nombre like "%'. $valor .'%" or inscripciones.responsable like "%'. $valor .'%" or inscripciones.telefono like "%'. $valor .'%"
         ');
         return $this->respuesta = $this->db->obtener_data();
     }
-    public function eliminarDocente($idDocente = 0){
+    public function eliminarInscripcion($idInscripcion = 0){
         $this->db->consultas('
             DELETE inscripciones
             FROM inscripciones
-            WHERE inscripciones.idDocente="'.$idDocente.'"
+            WHERE inscripciones.idInscripcion="'.$idInscripcion.'"
         ');
         return $this->respuesta['msg'] = 'Registro eliminado correctamente';;
     }

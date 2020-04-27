@@ -1,7 +1,7 @@
-<form method="post" id="frm-buscar-inscripciones">
+<form method="POST" id="frm-buscar-inscripciones">
     <div class="card text-white bg-dark mb-3" style="max-width: 48rem;">
-        <div class="card-header">
-            BUSQUEDA DE INSCRIPCIONES
+        <div class="car-header">
+            BUSQUEDA INSCRIPCIONES
 
             <button type="button" id="btn-close-buscar-inscripciones" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -11,8 +11,8 @@
             <table id="tbl-buscar-inscripciones" class="table-striped table-dark table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th colspan="7">
-                            <input type="text" v-model="valor" v-on:keyup="buscarInscripciones" placeholder="codigo, nombre, dui o nit" class="form-control">
+                        <th colspan="6">
+                            <input type="text" v-model="valor" v-on:keyup="buscarInscripciones" placeholder="Rellene los datos a buscar" class="form-control">
                         </th>
                     </tr>
                     <tr>
@@ -32,7 +32,7 @@
                         <td>{{ datos.responsable }}</td>
                         <td>{{ datos.telefono }}</td>
                         <td>
-                            <input v-on:click="eliminarInscripcion(mi_inscripcion.idinscripcion)" type="button" class="btn btn-outline-danger text-white" value="del">
+                            <input v-on:click="eliminarInscripcion(datos.idInscripcion)" type="button" class="btn btn-outline-danger text-white" value="del">
                         </td>
                     </tr>
                 </tbody>

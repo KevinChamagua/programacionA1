@@ -22,10 +22,13 @@ class nota{
     }
     private function validar_datos(){
         if( empty($this->datos['codigo']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el codigo del nota';
+            $this->respuesta['msg'] = 'por favor ingrese el codigo del materia';
         }
         if( empty($this->datos['nombre']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el nombre del nota';
+            $this->respuesta['msg'] = 'por favor ingrese el nombre de la materia';
+        }
+        if( empty($this->datos['notatotal']) ){
+            $this->respuesta['msg'] = 'por favor ingrese la notatotal del nota';
         }
         $this->almacenar_nota();
     }
@@ -33,9 +36,10 @@ class nota{
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
-                    INSERT INTO notas (codigo,nombre) VALUES(
+                    INSERT INTO notas (codigo,nombre,notatotal,telefono,dui,nit) VALUES(
                         "'. $this->datos['codigo'] .'",
-                        "'. $this->datos['nombre'] .'" 
+                        "'. $this->datos['nombre'] .'",
+                        "'. $this->datos['notatotal'] .'"
                     )
                 ');
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
@@ -43,8 +47,9 @@ class nota{
                 $this->db->consultas('
                     UPDATE notas SET
                         codigo      = "'. $this->datos['codigo'] .'",
-                        nombre      = "'. $this->datos['nombre'] .'"                  
-                    WHERE idNota    = "'. $this->datos['idNota'] .'"
+                        nombre      = "'. $this->datos['nombre'] .'",
+                        nit         = "'. $this->datos['notatotal'] .'"
+                    WHERE idNota = "'. $this->datos['idNota'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
@@ -52,9 +57,9 @@ class nota{
     }
     public function buscarNota($valor = ''){
         $this->db->consultas('
-            select notas.idNota, notas.codigo, notas.nombre
+            select notas.idNota, notas.codigo, notas.nombre, notas.notatotal
             from notas
-            where notas.codigo like "%'. $valor .'%" or notas.nombre like "%'. $valor .'%"
+            where notas.codigo like "%'. $valor .'%" or notas.nombre like "%'. $valor .'%" or notas.notatotal like "%'. $valor .'%" 
         ');
         return $this->respuesta = $this->db->obtener_data();
     }

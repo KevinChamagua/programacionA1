@@ -1,26 +1,26 @@
 var appBuscarInscripciones = new Vue({
-    el:'#frm-buscar-inscripcion',
+    el:'#frm-buscar-inscripciones',
     data:{
         misdatos:[],
         valor:''
     },
     methods:{
-        buscarInscripcion:function(){
-            fetch(`private/Modulos/inscripcion/procesos.php?proceso=buscarInscripciones&inscripciones=${this.valor}`).then(resp=>resp.json()).then(resp=>{
+        buscarInscripciones(){
+            fetch(`private/Modulos/inscripciones/procesos.php?proceso=buscarInscripcion&inscripcion=${this.valor}`).then(resp=>resp.json()).then(resp=>{
                 this.misdatos = resp;
              });
             },
-            modificarInscripcion:function(inscripciones){
-                appinscripciones.inscripciones = inscripciones;
-                appinscripciones.inscripciones.accion = 'modificar';
+            modificarInscripcion:function(inscripcion){
+                appinscripcion.inscripcion = inscripcion;
+                appinscripcion.inscripcion.accion = 'modificar';
             },
             eliminarInscripcion:function(idInscripcion){
-                fetch(`private/Modulos/inscripcion/procesos.php?proceso=eliminarInscripcion&inscripciones=${idInscripcion}`).then(resp=>resp.json()).then(resp=>{
-                    this.buscarInscripcion();
+                fetch(`private/Modulos/inscripciones/procesos.php?proceso=eliminarInscripcion&inscripcion=${idInscripcion}`).then(resp=>resp.json()).then(resp=>{
+                    this.buscarInscripciones();
                 });
             }
         },
-        created(){
-            this.buscarInscripcion();
+        created:function(){
+            this.buscarInscripciones();
         }
     });
