@@ -1,23 +1,23 @@
 <?php 
 include('../../Config/Config.php');
-$nota = new nota($conexion);
+$pelicula = new pelicula($conexion);
 
 $proceso = '';
 if( isset($_GET['proceso']) && strlen($_GET['proceso'])>0 ){
 	$proceso = $_GET['proceso'];
 }
-$nota->$proceso( $_GET['nota'] );
-print_r(json_encode($nota->respuesta));
+$pelicula->$proceso( $_GET['pelicula'] );
+print_r(json_encode($pelicula->respuesta));
 
-class nota{
+class pelicula{
     private $datos = array(), $db;
     public $respuesta = ['msg'=>'correcto'];
     
     public function __construct($db){
         $this->db=$db;
     }
-    public function recibirDatos($nota){
-        $this->datos = json_decode($nota, true);
+    public function recibirDatos($pelicula){
+        $this->datos = json_decode($pelicula, true);
         $this->validar_datos();
     }
     private function validar_datos(){
@@ -27,47 +27,47 @@ class nota{
         if( empty($this->datos['nombre']) ){
             $this->respuesta['msg'] = 'por favor ingrese el nombre de la materia';
         }
-        if( empty($this->datos['notatotal']) ){
-            $this->respuesta['msg'] = 'por favor ingrese la notatotal del nota';
+        if( empty($this->datos['peliculatotal']) ){
+            $this->respuesta['msg'] = 'por favor ingrese la peliculatotal del pelicula';
         }
-        $this->almacenar_nota();
+        $this->almacenar_pelicula();
     }
-    private function almacenar_nota(){
+    private function almacenar_pelicula(){
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
-                    INSERT INTO notas (codigo,nombre,notatotal,telefono,dui,nit) VALUES(
+                    INSERT INTO peliculas (codigo,nombre,peliculatotal,telefono,dui,nit) VALUES(
                         "'. $this->datos['codigo'] .'",
                         "'. $this->datos['nombre'] .'",
-                        "'. $this->datos['notatotal'] .'"
+                        "'. $this->datos['peliculatotal'] .'"
                     )
                 ');
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
             } else if( $this->datos['accion']==='modificar' ){
                 $this->db->consultas('
-                    UPDATE notas SET
-                        codigo      = "'. $this->datos['codigo'] .'",
-                        nombre      = "'. $this->datos['nombre'] .'",
-                        nit         = "'. $this->datos['notatotal'] .'"
-                    WHERE idNota = "'. $this->datos['idNota'] .'"
+                    UPDATE peliculas SET
+                        codigo        = "'. $this->datos['codigo'] .'",
+                        nombre        = "'. $this->datos['nombre'] .'",
+                        nit           = "'. $this->datos['peliculatotal'] .'"
+                    WHERE idPelicula  = "'. $this->datos['idPelicula'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
         }
     }
-    public function buscarNota($valor = ''){
+    public function buscarPelicula($valor = ''){
         $this->db->consultas('
-            select notas.idNota, notas.codigo, notas.nombre, notas.notatotal
-            from notas
-            where notas.codigo like "%'. $valor .'%" or notas.nombre like "%'. $valor .'%" or notas.notatotal like "%'. $valor .'%" 
+            select peliculas.idPelicula, peliculas.codigo, peliculas.nombre, peliculas.peliculatotal
+            from peliculas
+            where peliculas.codigo like "%'. $valor .'%" or peliculas.nombre like "%'. $valor .'%" or peliculas.peliculatotal like "%'. $valor .'%" 
         ');
         return $this->respuesta = $this->db->obtener_data();
     }
-    public function eliminarNota($idNota = 0){
+    public function eliminarPelicula($idPelicula = 0){
         $this->db->consultas('
-            DELETE notas
-            FROM notas
-            WHERE notas.idNota="'.$idNota.'"
+            DELETE peliculas
+            FROM peliculas
+            WHERE peliculas.idPelicula="'.$idPelicula.'"
         ');
         return $this->respuesta['msg'] = 'Registro eliminado correctamente';;
     }
