@@ -11,30 +11,40 @@
             <div class="row row-cols-1 p-2">
                 <div class="row-col">
                     <div class="col">
-                        CODIGO:
+                        DESCRIPCION:
                     </div>
                     <div class="col">
-                        <input type="text" required v-model="pelicula.codigo" placeholder="000" class="form-control">
+                        <input type="text" required v-model="pelicula.descripcion" placeholder="AAAA" class="form-control">
                     </div>
                 </div>
             </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col">
                     <div class="col">
-                        NOMBRE:
+                        SINOPSIS:
                     </div>
                     <div class="col">
-                        <input type="text" required v-model="pelicula.nombre" placeholder="AAA AAAA" class="form-control">
+                        <input type="text" required v-model="pelicula.sinopsis" placeholder="AAA AAAA" class="form-control">
                     </div>
                 </div>
             </div>
             <div class="row row-cols-1">
                 <div class="row-col">
                     <div class="col">
-                        PELICULA:
+                        GENERO:
                     </div>
                     <div class="col">
-                        <input type="text" required v-model="pelicula.peliculatotal" placeholder="00.00" class="form-control">
+                        <input type="text" required v-model="pelicula.genero" placeholder="AAAAAA" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1">
+                <div class="row-col">
+                    <div class="col">
+                        DURACION:
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="pelicula.duracion" placeholder="00.00.00" class="form-control">
                     </div>
                 </div>
             </div>
@@ -43,7 +53,7 @@
                     <div class="col">
                         <input id="btnGuardarPeliculas" type="submit" class="btn btn-outline-primary text-white" value="Guardar">
                         <input type="reset" class="btn btn-outline-warning text-white" value="Limpiar">
-                        <input type="button" class="btn btn-outline-success mostrar-buscar-peliculas text-white" data-modulo="peliculas" data-form="buscar-" value="Buscar" >
+                        <input type="button" class="btn btn-outline-success mostrar-buscar-peliculas text-white" data-modulo="peliculas" data-form="buscar-peliculas" value="Buscar" data-modulo="buscar-peliculas" >
                     </div>
                 </div>
             </div>

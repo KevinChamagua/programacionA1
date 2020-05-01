@@ -4,9 +4,10 @@ var apppeliculas = new Vue({
         pelicula:{
             idPelicula     : 0,
             accion         : 'nuevo',
-            codigo         : '',
-            nombre         : '',
-            pelicualatotal : '',
+            descripcion    : '',
+            sinopsis       : '',
+            genero         : '',
+            duracion       : '',
             msg            : ''
         }
     },
@@ -20,9 +21,10 @@ var apppeliculas = new Vue({
         limpiarPeliculas(){
             this.pelicula.idPelicula=0;
             this.pelicula.accion="nuevo";
-            this.pelicula.codigo="";
-            this.pelicula.nombre="";
-            this.pelicula.peliculatotal="";
+            this.pelicula.descripcion="";
+            this.pelicula.sinopsis="";
+            this.pelicula.genero="";
+            this.pelicula.duracion="";
             this.pelicula.msg="";
         }
     }

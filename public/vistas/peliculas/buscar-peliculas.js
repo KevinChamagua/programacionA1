@@ -1,26 +1,27 @@
-var appbuscar_peliculas = new Vue({
-    el: '#frm-buscar-peliculas',
+var appBuscarPeliculas = new Vue({
+    el:'#frm-buscar-peliculas',
     data:{
         mispeliculas:[],
         valor:''
     },
     methods:{
-        buscarPeliculas(){
-            fetch(`private/Modulos/peliculas/procesos.php?proceso=buscarPelicula&pelicula=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
+        buscarPelicula(){
+            fetch(`private/Modulos/peliculas/procesos.php?proceso=buscarPelicula&pelicula=${this.valor}`).then(resp=>resp.json()).then(resp=>{
                 this.mispeliculas = resp;
-            });
+             });
+            },
+            modificarPelicula:function(pelicula){
+                apppelicula.pelicula = pelicula;
+                apppelicula.pelicula.accion = 'modificar';
+            },
+            eliminarPelicula:function(idPelicula){
+                fetch(`private/Modulos/peliculas/procesos.php?proceso=eliminarPelicula&pelicula=${idPelicula}`).then(resp=>resp.json()).then(resp=>{
+                    this.buscarPelicula();
+                });
+            }
         },
-        modificarNota(pelicula){
-            apppeliculas.pelicula = pelicula;
-            apppeliculas.peliculas.accion = 'modificar';
-        },
-        eliminarPelicula(idPelicula){
-            fetch(`private/Modulos/peliculas/procesos.php?proceso=eliminarPelicula&pelicula=${idPelicula}`).then( resp=>resp.json() ).then(resp=>{
-                this.buscarPeliculas();
-            });
+        created:function(){
+            this.buscarPelicula();
         }
-    },
-    created(){
-        this.buscarPeliculas();
-    }
-});
+    });
+    

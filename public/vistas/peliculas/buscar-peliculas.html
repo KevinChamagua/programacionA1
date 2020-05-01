@@ -1,7 +1,7 @@
-<form method="post" id="frm-buscar-peliculas">
+<form method="POST" id="frm-buscar-peliculas">
     <div class="card text-white bg-dark mb-3" style="max-width: 48rem;">
-        <div class="card-header">
-            BUSQUEDA DE PELICULAS
+        <div class="car-header">
+            BUSQUEDA PELICULAS
 
             <button type="button" id="btn-close-buscar-peliculas" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -11,22 +11,24 @@
             <table id="tbl-buscar-peliculas" class="table-striped table-dark table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th colspan="4">
-                            <input type="text" v-model="valor" v-on:keyup="buscarPeliculas" placeholder="codigo del alumno y nombre la materia" class="form-control">
+                        <th colspan="5">
+                            <input type="text" v-model="valor" v-on:keyup="buscarPelicula" placeholder="rellene los datos a buscar" class="form-control">
                         </th>
                     </tr>
                     <tr>
-                        <th>CODIGO</th>
-                        <th>NOMBRE</th>
-                        <th>PELICULA</th>
+                        <th>DESCRIPCION</th>
+                        <th>SINOPIS</th>
+                        <th>GENERO</th>
+                        <th>DURACION</th>
                         <th> </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="mipelicula in mispeliculas" :key="mipelicula.idPelicula" v-on:click="modificarPelicula(mipelicula)" >
-                        <td>{{ mipeliculaa.codigo }}</td>
-                        <td>{{ mipelicula.nombre }}</td>
-                        <td>{{ mipelicula.peliculatotal }}</td>
+                        <td>{{ mipelicula.descripcion }}</td>
+                        <td>{{ mipelicula.sinopsis }}</td>
+                        <td>{{ mipelicula.genero }}</td>
+                        <td>{{ mipelicula.duracion }}</td>
                         <td>
                             <input v-on:click="eliminarPelicula(mipelicula.idPelicula)" type="button" class="btn btn-outline-danger text-white" value="del">
                         </td>
@@ -36,4 +38,4 @@
         </div>
     </div>
 </form>
-<script src="public/vistas/peliculas/buscar-peliculas.js"></script>
+<script src="public/vistas/peliculas/buscar-peliculas.js"></script> 
