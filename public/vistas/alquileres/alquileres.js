@@ -3,6 +3,7 @@ var appalquileres = new Vue({
     data:{
         alquiler:{
             idAlquiler : 0,
+            idAlquiler : 0,
             accion    : 'nuevo',
             fechadeprestamo    : '',
             fechadedevolucion    : '',
@@ -14,7 +15,6 @@ var appalquileres = new Vue({
         guardarAlquileres(){
             fetch(`private/Modulos/alquileres/procesos.php?proceso=recibirDatos&alquiler=${JSON.stringify(this.alquiler)}`).then( resp=>resp.json() ).then(resp=>{
                 this.alquiler.msg = resp.msg;
-                this.limpiarAlquileres();
             });
         },
         limpiarAlquileres(){

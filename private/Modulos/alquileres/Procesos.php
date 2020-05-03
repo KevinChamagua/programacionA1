@@ -22,13 +22,13 @@ class alquiler{
     }
     private function validar_datos(){
         if( empty($this->datos['fechadeprestamo']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el fechadeprestamo del materia';
+            $this->respuesta['msg'] = 'por favor ingrese el fechadeprestamo del alquiler';
         }
         if( empty($this->datos['fechadedevolucion']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el fechadedevolucion de la materia';
+            $this->respuesta['msg'] = 'por favor ingrese el fechadedevolucion del alquiler';
         }
         if( empty($this->datos['valor']) ){
-            $this->respuesta['msg'] = 'por favor ingrese la valor del valor';
+            $this->respuesta['msg'] = 'por favor ingrese la valor del alquiler';
         }
         $this->almacenar_alquiler();
     }
@@ -36,7 +36,7 @@ class alquiler{
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
-                    INSERT INTO alquileres (fechadeprestamo,fechadedevolucion,valor,telefono,dui,nit) VALUES(
+                    INSERT INTO alquileres (fechadeprestamo,fechadedevolucion,valor) VALUES(
                         "'. $this->datos['fechadeprestamo'] .'",
                         "'. $this->datos['fechadedevolucion'] .'",
                         "'. $this->datos['valor'] .'"
@@ -46,10 +46,10 @@ class alquiler{
             } else if( $this->datos['accion']==='modificar' ){
                 $this->db->consultas('
                     UPDATE alquileres SET
-                        fechadeprestamo      = "'. $this->datos['fechadeprestamo'] .'",
+                        fechadeprestamo        = "'. $this->datos['fechadeprestamo'] .'",
                         fechadedevolucion      = "'. $this->datos['fechadedevolucion'] .'",
-                        nit         = "'. $this->datos['valor'] .'"
-                    WHERE idAlquiler = "'. $this->datos['idAlquiler'] .'"
+                        valor                  = "'. $this->datos['valor'] .'"
+                    WHERE idAlquiler= "'. $this->datos['idAlquiler'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
