@@ -4,16 +4,16 @@ var appclientes = new Vue({
         cliente:{
             idCliente : 0,
             accion    : 'nuevo',
+            codigo    : '',
             nombre    : '',
             direccion : '',
             telefono  : '',
-            dui       : '',
             msg       : ''
         }
     },
     methods:{
         guardarClientes(){
-            fetch(`private/Modulos/clientes/procesos.php?proceso=recibirDatos&cliente=${JSON.stringify(this.cliente)}`).then( resp=>resp.json() ).then(resp=>{         
+            fetch(`private/Modulos/clientes/procesos.php?proceso=recibirDatos&cliente=${JSON.stringify(this.cliente)}`).then( resp=>resp.json() ).then(resp=>{
                 this.cliente.msg = resp.msg;
             });
         },

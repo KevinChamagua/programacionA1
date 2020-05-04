@@ -5,14 +5,14 @@ var appBuscarClientes = new Vue({
         valor:''
     },
     methods:{
-        buscarCliente:function(){
+        buscarCliente(){
             fetch(`private/Modulos/clientes/procesos.php?proceso=buscarCliente&cliente=${this.valor}`).then(resp=>resp.json()).then(resp=>{
                 this.misclientes = resp;
              });
             },
             modificarCliente:function(cliente){
-                appclientes.cliente = cliente;
-                appclientes.cliente.accion = 'modificar';
+                appcliente.cliente = cliente;
+                appcliente.cliente.accion = 'modificar';
             },
             eliminarCliente:function(idCliente){
                 fetch(`private/Modulos/clientes/procesos.php?proceso=eliminarCliente&cliente=${idCliente}`).then(resp=>resp.json()).then(resp=>{

@@ -21,14 +21,14 @@ class cliente{
         $this->validar_datos();
     }
     private function validar_datos(){
+        if( empty($this->datos['dui']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el dui del estudiante';
+        }
         if( empty($this->datos['nombre']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el dui del cliente';
+            $this->respuesta['msg'] = 'por favor ingrese el nombre del estudiante';
         }
         if( empty($this->datos['direccion']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el direccion del cliente';
-        }
-        if( empty($this->datos['telefono']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el telefono del cliente';
+            $this->respuesta['msg'] = 'por favor ingrese la direccion del estudiante';
         }
         $this->almacenar_cliente();
     }
@@ -49,9 +49,9 @@ class cliente{
                     UPDATE clientes SET
                         nombre     = "'. $this->datos['nombre'] .'",
                         direccion  = "'. $this->datos['direccion'] .'",
-                        telefono   = "'. $this->datos['telefono'] .'",
-                        dui        = "'. $this->datos['dui'] .'"
-                    WHERE idCliente = "'.$this->datos['idCliente'] .'"
+                        telefono   = "'. $this->datos['telefono'] .'"
+                        dui     = "'. $this->datos['dui'] .'",
+                    WHERE idCliente = "'. $this->datos['idCliente'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
@@ -61,7 +61,7 @@ class cliente{
         $this->db->consultas('
             select clientes.idCliente, clientes.nombre, clientes.direccion, clientes.telefono, clientes.dui
             from clientes
-            where clientes.nombre like "%'. $valor .'%" or clientes.direccion like "%'. $valor .'%"
+            where clientes.dui like "%'. $valor .'%" or clientes.nombre like "%'. $valor .'%"
         ');
         return $this->respuesta = $this->db->obtener_data();
     }

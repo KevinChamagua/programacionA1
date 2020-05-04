@@ -1,5 +1,5 @@
-<form v-on:submit.prevent="guardarClientes" v-on:reset="limpiarClientes" id="frm-clientes">  
-      <div class="card text-white background-color mb-3" style="max-width: 24rem; background-color: #09234b;">
+<form method="post" id="frm-clientes" v-on:submit.prevent="guardarClientes" v-on:reset.prevent="limpiarClientes">
+    <div class="card text-white bg-dark mb-3" style="max-width: 24rem;">
         <div class="card-header">
             MANTENIMIENTO DE CLIENTES
 
@@ -14,7 +14,7 @@
                         NOMBRE:
                     </div>
                     <div class="col">
-                        <input type="text" required v-model="cliente.nombre" placeholder="XXXX000000" class="form-control">
+                        <input type="text" required v-model="cliente.codigo" placeholder="XXXX000000" class="form-control">
                     </div>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                         DIRECCION:
                     </div>
                     <div class="col">
-                        <input type="text" required v-model="cliente.direccion" placeholder="AAA AAAA" class="form-control">
+                        <input type="text" required v-model="cliente.nombre" placeholder="AAA AAAA" class="form-control">
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                         TELEFONO:
                     </div>
                     <div class="col">
-                        <input type="text" required v-model="cliente.telefono" placeholder="XXXX000000" class="form-control">
+                        <input type="text" required v-model="cliente.direccion" placeholder="XXXX000000" class="form-control">
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                         DUI:
                     </div>
                     <div class="col">
-                        <input type="text" required v-model="cliente.dui" placeholder="0000-0000" class="form-control">
+                        <input type="text" required v-model="cliente.telefono" placeholder="0000-0000" class="form-control">
                     </div>
                 </div>
             </div>
@@ -56,12 +56,10 @@
                         <input type="button" class="btn btn-outline-success mostrar-buscar-clientes text-white" data-modulo="clientes" data-form="buscar-clientes" value="Buscar" data-modulo="buscar-clientes" >
                     </div>
                 </div>
-            </div>  
+            </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col text-center">
-                    <div class="col">
-                        <div class="alert alert-success" role="alert">{{ cliente.msg }}</div>
-                    </div>
+                    <div class="col" id="respuestaCliente"> </div>
                 </div>
             </div>
         </div>
