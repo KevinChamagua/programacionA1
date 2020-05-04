@@ -10,9 +10,9 @@ var appBuscarPeliculas = new Vue({
                 this.mispeliculas = resp;
              });
             },
-            modificarPelicula:function(pelicula){
-                apppelicula.pelicula = pelicula;
-                apppelicula.pelicula.accion = 'modificar';
+            modificarPelicula(pelicula){
+                apppeliculas.pelicula = pelicula;
+                apppeliculas.pelicula.accion = 'modificar';
             },
             eliminarPelicula:function(idPelicula){
                 fetch(`private/Modulos/peliculas/procesos.php?proceso=eliminarPelicula&pelicula=${idPelicula}`).then(resp=>resp.json()).then(resp=>{

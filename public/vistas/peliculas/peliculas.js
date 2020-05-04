@@ -15,7 +15,6 @@ var apppeliculas = new Vue({
         guardarPeliculas(){
             fetch(`private/Modulos/peliculas/procesos.php?proceso=recibirDatos&pelicula=${JSON.stringify(this.pelicula)}`).then( resp=>resp.json() ).then(resp=>{
                 this.pelicula.msg = resp.msg;
-                this.limpiarPeliculas();
             });
         },
         limpiarPeliculas(){
