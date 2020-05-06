@@ -1,0 +1,45 @@
+<form method="POST" id="frm-buscar-prestamos">
+    <div class="card text-white background-color mb-3" style="max-width: 48rem; background-color: #030f22;">
+        <div class="car-header">
+            BUSQUEDA PRESTAMOS
+
+            <button type="button" id="btn-close-buscar-prestamos" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <table id="tbl-buscar-prestamos" class="table-striped table-dark table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="7">
+                            <input type="text" v-model="valor" v-on:keyup="buscarPrestamo" placeholder="Escriba el datos a buscar" class="form-control">
+                        </th>
+                    </tr>
+                    <tr>                       
+                        <th>NOMBRE</th>
+                        <th>DIRECCION</th>
+                        <th>TELEFONO</th>
+                        <th>LIBRO</th>
+                        <th>FECHA DE PRESTAMO</th>
+                        <th>FECHA DE DEVOLUCION</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="miprestamo in misprestamos" :key="miprestamo.idPrestamo" v-on:click="modificarPrestamo(miprestamo)" >
+                        <td>{{ miprestamo.nombre }}</td>
+                        <td>{{ miprestamo.direccion }}</td>
+                        <td>{{ miprestamo.telefono }}</td>
+                        <td>{{ miprestamo.libro }}</td>
+                        <td>{{ miprestamo.fprestamo }}</td>
+                        <td>{{ miprestamo.fdevolucion }}</td>
+                        <td>
+                            <input v-on:click="eliminarPrestamo(miprestamo.idPrestamo)" type="button" class="btn btn-outline-danger text-white" value="del">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/prestamos/buscar-prestamos.js"></script> 
