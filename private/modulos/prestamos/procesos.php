@@ -21,13 +21,13 @@ class prestamo{
         $this->validar_datos();
     }
     private function validar_datos(){
-        if( empty($this->datos['nombre']) ){
+        if( empty(trim($this->datos['nombre'])) ){
             $this->respuesta['msg'] = 'por favor ingrese su Nombre de estudiante';
         }
-        if( empty($this->datos['direccion']) ){
+        if( empty(trim($this->datos['direccion'])) ){
             $this->respuesta['msg'] = 'por favor ingrese su direccion ';
         }
-        if( empty($this->datos['telefono']) ){
+        if( empty(trim($this->datos['telefono'])) ){
             $this->respuesta['msg'] = 'por favor ingrese su telefono';
         }
         $this->almacenar_Prestamo();
@@ -58,6 +58,8 @@ class prestamo{
                     WHERE idPrestamo = "'.$this->datos['idPrestamo'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
+            } else{
+                $this->respuesta['msg'] = 'Registro no se actualizado correctamente';
             }
         }
     }

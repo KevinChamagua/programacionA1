@@ -16,7 +16,13 @@ var appprestamos = new Vue({
     methods:{
         guardarPrestamos(){
             fetch(`private/Modulos/prestamos/procesos.php?proceso=recibirDatos&prestamo=${JSON.stringify(this.prestamo)}`).then( resp=>resp.json() ).then(resp=>{         
-                this.prestamo.msg = resp.msg;
+                if( resp.msg.indexOf("correctamente")>=0 ){
+                    alertify.success(resp.msg);
+                } else if(resp.msg.indexOf("Error")>=0){
+                    alertify.error(resp.msg);
+                } else{
+                    alertify.warning(resp.msg);
+                }
             });
         },
         limpiarPrestamos(){

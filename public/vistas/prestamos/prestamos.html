@@ -1,5 +1,5 @@
 <form v-on:submit.prevent="guardarPrestamos" v-on:reset="limpiarPrestamos" id="frm-prestamos">  
-    <div class="card text-white background-color mb-3" style="max-width: 24rem; background-color: #09234b;">
+    <div class="card text-white background-color mb-3" style="max-width: 24rem; background-color: #64460e;">
       <div class="card-header">
           MANTENIMIENTO DE PRESTAMOS
 
@@ -38,7 +38,7 @@
                   </div>
               </div>
           </div>
-          <div class="row row-cols-1">
+          <div class="row row-cols-1 p-2">
               <div class="row-col">
                   <div class="col">
                       LIBRO:
@@ -48,7 +48,7 @@
                   </div>
               </div>
           </div>
-          <div class="row row-cols-1">
+          <div class="row row-cols-1 p-2">
             <div class="row-col">
                 <div class="col">
                     FECHA DE PRESTAMO:
@@ -58,7 +58,7 @@
                 </div>
             </div>
         </div>
-        <div class="row row-cols-1">
+        <div class="row row-cols-1 p-2">
             <div class="row-col">
                 <div class="col">
                     FECHA DE DEVOLUCION:
@@ -77,13 +77,6 @@
                   </div>
               </div>
           </div>  
-          <div class="row row-cols-1 p-2">
-              <div class="row-col text-center">
-                  <div class="col">
-                      <div class="alert alert-success" role="alert">{{ prestamo.msg }}</div>
-                  </div>
-              </div>
-          </div>
       </div>
   </div>
 </form>

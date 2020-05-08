@@ -21,22 +21,22 @@ class alumno{
         $this->validar_datos();
     }
     private function validar_datos(){
-        if( empty($this->datos['nombre']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el nombre del alumno';
+        if( empty(trim($this->datos['nombre'])) ){
+            $this->respuesta['msg'] = 'por favor ingrese su Nombre de estudiante';
         }
-        if( empty($this->datos['direccion']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el direccion del alumno';
+        if( empty(trim($this->datos['direccion'])) ){
+            $this->respuesta['msg'] = 'por favor ingrese su direccion ';
         }
-        if( empty($this->datos['telefono']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el telefono del alumno';
+        if( empty(trim($this->datos['telefono'])) ){
+            $this->respuesta['msg'] = 'por favor ingrese su telefono';
         }
-        $this->almacenar_alumno();
+        $this->almacenar_Alumno();
     }
     private function almacenar_Alumno(){
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
-                    INSERT INTO alumnos (nombre,direccion,telefono,codigo) VALUES(
+                    INSERT INTO alumnos (nombre,direccion,telefono, codigo) VALUES(
                         "'. $this->datos['nombre'] .'",
                         "'. $this->datos['direccion'] .'",
                         "'. $this->datos['telefono'] .'",
@@ -50,10 +50,12 @@ class alumno{
                         nombre     = "'. $this->datos['nombre'] .'",
                         direccion  = "'. $this->datos['direccion'] .'",
                         telefono   = "'. $this->datos['telefono'] .'",
-                        codigo     = "'. $this->datos['codigo'] .'"
+                        codigo      = "'. $this->datos['codigo'] .'"                      
                     WHERE idAlumno = "'.$this->datos['idAlumno'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
+            } else{
+                $this->respuesta['msg'] = 'Registro no se actualizado correctamente';
             }
         }
     }

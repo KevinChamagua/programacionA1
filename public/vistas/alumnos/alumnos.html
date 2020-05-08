@@ -1,9 +1,9 @@
-<form v-on:submit.prevent="guardarAlumno" v-on:reset="limpiarAlumno" id="frm-alumno">  
-    <div class="card text-white background-color mb-3" style="max-width: 24rem; background-color: #09234b;">
+<form v-on:submit.prevent="guardarAlumnos" v-on:reset="limpiarAlumnos" id="frm-alumnos">  
+    <div class="card text-white background-color mb-3" style="max-width: 24rem; background-color: #64460e;">
       <div class="card-header">
           MANTENIMIENTO DE ALUMNOS
 
-          <button type="button" id="btn-close-alumno" class="close" aria-label="Close">
+          <button type="button" id="btn-close-alumnos" class="close" aria-label="Close">
               <span aria-hidden="true">&times;</span>
           </button>
       </div>
@@ -14,7 +14,7 @@
                       NOMBRE:
                   </div>
                   <div class="col">
-                      <input type="text" required v-model="alumno.nombre" placeholder="XXXX000000" class="form-control">
+                      <input type="text" required v-model="alumno.nombre" placeholder="AAA" class="form-control">
                   </div>
               </div>
           </div>
@@ -34,36 +34,29 @@
                       TELEFONO:
                   </div>
                   <div class="col">
-                      <input type="text" required v-model="alumno.telefono" placeholder="XXXX000000" class="form-control">
+                      <input type="text" required v-model="alumno.telefono" placeholder="0000-00000" class="form-control">
                   </div>
               </div>
           </div>
-          <div class="row row-cols-1">
+          <div class="row row-cols-1 p-2">
               <div class="row-col">
                   <div class="col">
                       CODIGO:
                   </div>
                   <div class="col">
-                      <input type="text" required v-model="alumno.codigo" placeholder="0000-0000" class="form-control">
+                      <input type="text" required v-model="alumno.codigo" placeholder="SSSS000000" class="form-control">
                   </div>
               </div>
           </div>
           <div class="row row-cols-1 p-2">
               <div class="row-col text-center">
                   <div class="col">
-                      <input id="btnGuardarAlumno" type="submit" class="btn btn-outline-primary text-white" value="Guardar">
+                      <input id="btnGuardarAlumnos" type="submit" class="btn btn-outline-primary text-white" value="Guardar">
                       <input type="reset" class="btn btn-outline-warning text-white" value="Limpiar">
-                      <input type="button" class="btn btn-outline-success mostrar-buscar-alumno text-white" data-modulo="alumnos" data-form="buscar-alumnos" value="Buscar" data-modulo="buscar-alumnos" >
+                      <input type="button" class="btn btn-outline-success mostrar-buscar-alumnos text-white" data-modulo="alumnos" data-form="buscar-alumnos" value="Buscar" data-modulo="buscar-alumnos" >
                   </div>
               </div>
-          </div>  
-          <div class="row row-cols-1 p-2">
-              <div class="row-col text-center">
-                  <div class="col">
-                      <div class="alert alert-success" role="alert">{{ alumno.msg }}</div>
-                  </div>
-              </div>
-          </div>
+          </div>          
       </div>
   </div>
 </form>

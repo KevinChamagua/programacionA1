@@ -1,5 +1,5 @@
 <form method="POST" id="frm-buscar-alumnos">
-    <div class="card text-white background-color mb-3" style="max-width: 48rem; background-color: #030f22;">
+    <div class="card text-white background-color mb-3" style="max-width: 48rem; background-color: #64460e;">
         <div class="car-header">
             BUSQUEDA ALUMNOS
 
@@ -8,7 +8,7 @@
             </button>
         </div>
         <div class="card-body">
-            <table id="tbl-buscar-alumnos" class="table-striped table-dark table-bordered table-hover">
+            <table id="tbl-buscar-alumnos" class="table-striped table-white table-bordered table-hover">
                 <thead>
                     <tr>
                         <th colspan="5">
@@ -24,13 +24,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="mialumnos in misalumnos" :key="mialumnos.idAlumno" v-on:click="modificarAlumno(mialumno)" >
-                        <td>{{ mialumnos.nombre }}</td>
-                        <td>{{ mialumnos.direccion }}</td>
-                        <td>{{ mialumnos.telefono }}</td>
-                        <td>{{ mialumnos.codigo }}</td>
+                    <tr v-for="mialumno in misalumnos" :key="mialumno.idAlumno" v-on:click="modificarAlumno(mialumno)" >
+                        <td>{{ mialumno.nombre }}</td>
+                        <td>{{ mialumno.direccion }}</td>
+                        <td>{{ mialumno.telefono }}</td>
+                        <td>{{ mialumno.codigo }}</td>
                         <td>
-                            <input v-on:click="eliminarAlumno(mialumnos.idAlumno)" type="button" class="btn btn-outline-danger text-white" value="del">
+                            <input v-on:click="eliminarAlumno(mialumno.idAlumno)" type="button" class="btn btn-outline-danger text-white" value="del">
                         </td>
                     </tr>
                 </tbody>

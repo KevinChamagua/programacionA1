@@ -7,3 +7,10 @@
 .v-select{
     background: #005780 !important;
 }
+
+body{
+   
+    background: url(proyects.png) no-repeat center center fixed;
+    background-size:cover;
+
+    }

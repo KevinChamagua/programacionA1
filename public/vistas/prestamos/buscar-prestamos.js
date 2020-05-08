@@ -15,8 +15,15 @@ var appBuscarPrestamos = new Vue({
                 appprestamos.prestamo.accion = 'modificar';
             },
             eliminarPrestamo:function(idPrestamo){
-                fetch(`private/Modulos/prestamos/procesos.php?proceso=eliminarPrestamo&prestamo=${idPrestamo}`).then(resp=>resp.json()).then(resp=>{
-                    this.buscarPrestamo();
+                alertify.confirm("Mantenimiento Prestamos","Esta seguro de eliminar",
+                ()=>{
+                    fetch(`private/Modulos/prestamos/procesos.php?proceso=eliminarPrestamo&prestamo=${idPrestamo}`).then( resp=>resp.json() ).then(resp=>{
+                        this.buscarPrestamos();
+                    });
+                    alertify.success('Registro Eliminado correctamente.');
+                },
+                ()=>{
+                    alertify.error('Eliminacion cancelada por el usuario.');
                 });
             }
         },
