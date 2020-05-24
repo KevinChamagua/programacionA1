@@ -1,24 +1,105 @@
-<link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+<form v-on:submit.prevent="guardarUsuario" v-on:reset="limpiarUsuarios" id="frm-login">  
 
-<div class="login">
-  <div class="login-header">
-    <h1>Login</h1>
-  </div>
-  <div class="login-form">
-    <h3>Username:</h3>
-    <input type="text" placeholder="Username"/><br>
-    <h3>Password:</h3>
-    <input type="password" placeholder="Password"/>
-    <br>
-    <input type="button" value="Login" class="login-button"/>
-    <br>
-    <a class="sign-up">Sign Up!</a>
-    <br>
-    <h6 class="no-access">Can't access your account?</h6>
-  </div>
-</div>
-<div class="error-page">
-  <div class="try-again">Error: Try again?</div>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style> body {font-family: Arial, Helvetica, sans-serif;}
+  form {border: 3px solid #f1f1f1;}
+  
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+  
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+  
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+  
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+  
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+  }
 
-<script src="public/vistas/login/login.js"></script>
+</style>
+</head>
+<link rel="stylesheet" href="public/css/estilos.css">
+<body>
+  <div class="card-header" style="background-color:#f1f1f1">
+      Inicio de seccion 
+
+    <button type="button" id="btn-close-login" class="close" aria-label="Close"  style="background-color:#ff0000">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form action="/action_page.php" method="post" style="background-color:#f1f1f1">
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <label for="uname"><b>Usuario</b></label>
+    <input type="text" placeholder="introduzca su usuario" name="uname" required>
+
+    <label for="psw"><b>Contraseña</b></label>
+    <input type="password" placeholder="introduzca su contraseña" name="psw" required>
+        
+    <button type="submit">Entrar</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Permanezca conectado
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancelar
+
+    </button>
+    <span class="psw">¿Olvidaste tu <a href="#">contraseña?</a></span>
+  </div>
+</form>
+
+</body>
+</html>

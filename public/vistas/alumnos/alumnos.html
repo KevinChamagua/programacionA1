@@ -1,13 +1,17 @@
 <form v-on:submit.prevent="guardarAlumnos" v-on:reset="limpiarAlumnos" id="frm-alumnos">  
     <div class="card text-white background-color mb-3" style="max-width: 24rem; background-color: #64460e;">
-      <div class="card-header">
+        <!-- esta parte conforma la cabezera del formulario -->
+
+        <div class="card-header">
           MANTENIMIENTO DE ALUMNOS
 
           <button type="button" id="btn-close-alumnos" class="close" aria-label="Close">
               <span aria-hidden="true">&times;</span>
           </button>
       </div>
-      <div class="card-body">
+      <!-- este es el contenido del formulario -->
+
+      <div class="card-body" style="max-width: 24rem; background-color: #6b5325;">
           <div class="row row-cols-1 p-2">
               <div class="row-col">
                   <div class="col">
@@ -48,12 +52,16 @@
                   </div>
               </div>
           </div>
+          <!-- aqui esta las funciones para guardar, limpiar y mostrar la busqueda de este caso alumnos -->
+
           <div class="row row-cols-1 p-2">
               <div class="row-col text-center">
                   <div class="col">
                       <input id="btnGuardarAlumnos" type="submit" class="btn btn-outline-primary text-white" value="Guardar">
-                      <input type="reset" class="btn btn-outline-warning text-white" value="Limpiar">
+                      <input type="reset" class="btn btn-success" value="Limpiar">
                       <input type="button" class="btn btn-outline-success mostrar-buscar-alumnos text-white" data-modulo="alumnos" data-form="buscar-alumnos" value="Buscar" data-modulo="buscar-alumnos" >
+                      <!-- siend aqui el llamado del formulario buscar-alumnos que se encuentra en la carpeta vistas -->
+
                   </div>
               </div>
           </div>          
@@ -61,3 +69,4 @@
   </div>
 </form>
 <script src="public/vistas/alumnos/alumnos.js"></script>
+<style>

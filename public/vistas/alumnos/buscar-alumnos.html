@@ -1,4 +1,6 @@
 <form method="POST" id="frm-buscar-alumnos">
+    <!--la forma que tendra el formulario -->
+
     <div class="card text-white background-color mb-3" style="max-width: 48rem; background-color: #64460e;">
         <div class="car-header">
             BUSQUEDA ALUMNOS
@@ -7,15 +9,18 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="max-width: 24rem; background-color: #6b5325;">
             <table id="tbl-buscar-alumnos" class="table-striped table-white table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th colspan="5">
+                        <th colspan="5"> <!-- aqui encontramos el tamaño que tendra el formulario -->
+
                             <input type="text" v-model="valor" v-on:keyup="buscarAlumno" placeholder="Escriba el datos a buscar" class="form-control">
                         </th>
                     </tr>
-                    <tr>                       
+                    <tr>         
+                        <!--los nombres de los los datos buscar  -->
+              
                         <th>NOMBRE</th>
                         <th>DIRECCION</th>
                         <th>TELEFONO</th>
@@ -24,6 +29,8 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- las id de los datos almacenados para que se puedan modificar desde la base de datos -->
+
                     <tr v-for="mialumno in misalumnos" :key="mialumno.idAlumno" v-on:click="modificarAlumno(mialumno)" >
                         <td>{{ mialumno.nombre }}</td>
                         <td>{{ mialumno.direccion }}</td>

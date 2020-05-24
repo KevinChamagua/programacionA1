@@ -1,13 +1,13 @@
 <?php 
-include('../../Config/Config.php');
+include('../../Config/Config.php'); //llamado de configuarcion 
 $alumno = new alumno($conexion);
 
-$proceso = '';
+$proceso = '';// proceso para obtener los datos de la tabla
 if( isset($_GET['proceso']) && strlen($_GET['proceso'])>0 ){
 	$proceso = $_GET['proceso'];
 }
 $alumno->$proceso( $_GET['alumno'] );
-print_r(json_encode($alumno->respuesta));
+print_r(json_encode($alumno->respuesta));//imprime los datos en json
 
 class alumno{
     private $datos = array(), $db;
