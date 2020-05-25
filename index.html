@@ -48,12 +48,13 @@
     <body>
       <!-- Creacion de la tabla -->
       <div style="text-align:center;">
-      <h2>Libros descargables(PDF)</h2>
-      <table border="1" style="max-width: 24rem; background-color: #eeeeee;">
+      <h2>Descarga o Alquila tu Libro</h2>
+      <table border="1" style="max-width: 24rem; background-color: #f19947;">
       <tr>
         <td>Id</td>
         <td>Libros</td>
-        <td>Links</td>
+        <td>Descargas</td>
+        <td>Alquila</td>
       </tr>
 
       <tr>
@@ -63,22 +64,23 @@
         <td>
           <a href="public\Libros\CUADERNO-DE-LA-HUERTA-ECOLÓGICA.pdf" download="Cuaderno de la huerta ecologica">Descargar</a> <!-- funcion de descargado de contenido -->
         </td>
+        <td>
+          <a class="nav-link mostrar-prestamos" data-modulo="prestamos" data-form="prestamos" href="#">Alquila</a>
+        </td>
       </tr>
 
       <tr>
-        <td>2</td>
-        <td>Argentina</td>
+        <td>2</td><!-- Id manual del contenido -->
+        <td>  <img src="https://img.freepik.com/vector-gratis/fondo-dibujos-animados-pizarra-matematicas_23-2148154590.jpg?size=338&ext=jpg" width="300" height="300"><!-- Configuracion de la imagen -->
+        </td>
+        <td>
+          <a href="public\Libros\operaciones-y-problemas-tercero y segundo-de-primaria.pdf" download="Operaciones y problemas tercero y segundo de primaria">Descargar</a> <!-- funcion de descargado de contenido -->
+        </td>
+        <td>
+          <a class="nav-link mostrar-prestamos" data-modulo="prestamos" data-form="prestamos" href="#">Alquila</a>
+        </td>
       </tr>
 
-      <tr>
-        <td>3</td>
-        <td>Uruguay</td>
-      </tr>
-
-       <tr>
-        <td>4</td>
-        <td>Estados Unidos</td>
-      </tr>
 
       </table>
       </div>
