@@ -1,4 +1,6 @@
 var zindex = 1;
+var socket = io.connect("http://localhost:3001",{'forceNew':true});
+
 function init(){
     $("[class*='mostrar']").click(function(e){
         let modulo = $(this).data("modulo"),

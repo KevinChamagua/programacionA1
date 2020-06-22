@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2020 a las 01:43:12
+-- Tiempo de generación: 22-06-2020 a las 03:59:03
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -66,6 +66,26 @@ CREATE TABLE `prestamos` (
 INSERT INTO `prestamos` (`idPrestamo`, `nombre`, `direccion`, `telefono`, `libro`, `fprestamo`, `fdevolucion`) VALUES
 (1, 'Kevin', 'Col', '7744-4545', 'espaguito', '2020-05-06', '2020-05-13');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `idUsuario` int(11) NOT NULL,
+  `usuario` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuario`, `usuario`, `email`, `password`) VALUES
+(1, '', '', '$2y$10$GwgnUTZbWwnweliVIToh..tFvmJ.osv8msarvIyZrAJ');
+
 --
 -- Índices para tablas volcadas
 --
@@ -83,6 +103,12 @@ ALTER TABLE `prestamos`
   ADD PRIMARY KEY (`idPrestamo`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`idUsuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -97,6 +123,12 @@ ALTER TABLE `alumnos`
 --
 ALTER TABLE `prestamos`
   MODIFY `idPrestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
